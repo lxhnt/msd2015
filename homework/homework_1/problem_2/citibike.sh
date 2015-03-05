@@ -8,13 +8,13 @@ cut -d, -f5 201402-citibike-tripdata.csv|sort|uniq|wc -l
 # count the number of unique bikes
 cut -d, -f12 201402-citibike-tripdata.csv|grep '[0-9]'|sort|uniq|wc -l
 # extract all of the trip start times
-cut -d, -f2 201402-citibike-tripdata.csv|grep '[0-9$]'|sort|uniq|wc -l
+cut -d, -f2 201402-citibike-tripdata.csv|grep '[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} [0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\}'|head
 # count the number of trips per day
-cut -d, -f2 201402-citibike-tripdata.csv|grep '[0-9$]'|cut -c 2-11|uniq -c
+cut -d, -f2 201402-citibike-tripdata.csv|grep '[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} [0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\}'|cut -c 2-11|uniq -c
 # find the day with the most rides
-cut -d, -f2 201402-citibike-tripdata.csv|grep '[0-9$]'|cut -c 2-11|uniq -c|sort|head -n1
+cut -d, -f2 201402-citibike-tripdata.csv|grep '[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} [0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\}'|cut -c 2-11|uniq -c|sort|head -n1
 # find the day with the fewest rides
-cut -d, -f2 201402-citibike-tripdata.csv|grep '[0-9$]'|cut -c 2-11|uniq -c|sort -r|head -n1
+cut -d, -f2 201402-citibike-tripdata.csv|grep '[0-9]\{4\}-[0-9]\{2\}-[0-9]\{2\} [0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\}'|cut -c 2-11|uniq -c|sort -r|head -n1
 # find the id of the bike with the most rides
 cut -d, -f12 201402-citibike-tripdata.csv|grep '[0-9$]'|cut -c 2-6|sort|uniq -c|sort|head -n1
 # count the number of riders by gender and birth year
