@@ -2,11 +2,11 @@ library(dplyr)
 library(ggplot2)
 library(scales)
 
-con_dply <- src_mysql(dbname="rstudio",user="root",password="lxhnt0906",host="localhost")
+con_dply <- src_mysql(dbname="rstudio",user="root",password="*****",host="localhost")
 
 myData <- con_dply %>%
   tbl("mratings") %>%
-  collect()user_ranking
+  collect()
 
 myData <- myData %>%
   group_by(MovieID) %>%
