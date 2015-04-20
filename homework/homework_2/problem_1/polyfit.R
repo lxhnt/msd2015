@@ -64,5 +64,5 @@ ggplot(data,aes(x,y))+
 
 
 # report coefficients for best model
-best_model <- lm(y~poly(x,6),data=data)
+best_model <- lm(y~poly(x,6,raw=TRUE),data=data)
 summary(best_model)$coefficients
