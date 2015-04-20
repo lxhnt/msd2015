@@ -19,7 +19,7 @@ prepared_data <- split(data)
 # fit a model and compute train / test error for each degree
 fit <- function(data,degree){
   models <- lapply(1:degree, function(n)
-    lm(y ~ poly(x, n), data = data$train)
+    lm(y ~ poly(x, n, raw=T), data = data$train)
   )
   train.rmse <-lapply(1:degree, function(n)
     sqrt(mean((data$train$y - fitted(models[[n]])) ^ 2))
